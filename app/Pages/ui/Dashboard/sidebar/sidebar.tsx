@@ -3,33 +3,65 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdDashboard, MdGroup, MdLogout } from "react-icons/md";
 
-const user = {
-  img: "/noavatar.png",
-  username: "John Doe",
-};
+// const user = {
+//   img: "/noavatar.png",
+//   username: "John Doe",
+// };
 
-const menuItems = [
-  {
-    list: [
-      {
-        title: "Dashboard",
-        path: "/Pages/Dashboard",
-        icon: <MdDashboard />,
-      },
-      {
-        title: "Attendance",
-        path: "/Pages/Dashboard/Attendance",
-        icon: <MdGroup />,
-      },
-    ],
-  },
-];
+interface User {
+  img: string; 
+  username: string; 
+}
 
-const MenuLink = ({ item }) => {
+const user: User = {
+  img: "/noavatar.png", 
+  username: "John Doe"
+}
+
+// const menuItems = [
+//   {
+//     list: [
+//       {
+//         title: "Dashboard",
+//         path: "/Pages/Dashboard",
+//         icon: <MdDashboard />,
+//       },
+//       {
+//         title: "Attendance",
+//         path: "/Pages/Dashboard/Attendance",
+//         icon: <MdGroup />,
+//       },
+//     ],
+//   },
+// ];
+
+// const MenuLink = ({ item }) => {
+  const menuItems: { list: MenuItem[] }[] = [
+    {
+      list: [
+        {
+          title: "Dashboard",
+          path: "/Pages/Dashboard",
+          icon: <MdDashboard />,
+        },
+        {
+          title: "Attendance",
+          path: "/Pages/Dashboard/Attendance",
+          icon: <MdGroup />,
+        },
+      ],
+    },
+  ];
+  
+  interface MenuLinkProps {
+    item: MenuItem;
+  }
+  
+  const MenuLink: React.FC<MenuLinkProps> = ({ item }) => {
   return (
     <Link href={item.path} className={styles.menuLink}>
       {item.icon}
-      <span>{item.title}</span> {/* Add back the text span */}
+      <span>{item.title}</span>
     </Link>
   );
 };
