@@ -26,13 +26,13 @@ const userSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    
+
     archived: {
         type: Boolean,
         default: false
     },
 
-})
+}, {timestamps: true})
 
 const userModel = mongoose.model("User", userSchema)
 
