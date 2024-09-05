@@ -5,6 +5,11 @@
   height: 100vh;
 }
 
+/* .container:hover,
+.active {
+  background-color: #2e374a;
+} */
+
 .user {
   display: flex;
   align-items: center;
@@ -38,7 +43,7 @@
 }
 
 .menuItem {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .menuLink {
@@ -48,11 +53,12 @@
   color: var(--textSoft);
   text-decoration: none;
   cursor: pointer;
+  padding: 10px;
 }
 
 .menuLink:hover,
-.menuLink.active {
-  background-color: var(--bgSoft);
+.active {
+  background-color: #2e374a;
 }
 
 /* .logout {
