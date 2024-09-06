@@ -1,10 +1,12 @@
-import connectDB from "@/app/utils/mongoDB";
-import { NextRequest, NextResponse } from "next/server";
-import { userZodSchema } from "@/app/validators/user";
-import userModel from "@/app/models/user";
-import { generateToken } from "@/app/utils/jwt";
-import { z } from "zod";
-import getUserByParam from "../../getUserByParam";
+import connectDB from "@/app/utils/mongoDB"
+import bcrypt from "bcryptjs"
+import { NextRequest, NextResponse } from "next/server"
+import { userZodSchema } from "@/app/validators/user"
+import userModel from "@/app/models/user"
+import { generateToken } from "@/app/utils/jwt"
+import { z } from "zod"
+import getUserByParam from "../../getUserByParam"
+import { genHashPassword } from "@/app/utils/bcryptjs"
 
 type userType = Omit<z.infer<typeof userZodSchema>, "cPassword">;
 
@@ -80,10 +82,12 @@ export async function POST(req: NextRequest) {
             )
         }
 
+        const hashedPassword = await genHashPassword(password, 12)
+
         const createdUser = await saveUserToDB({
             name,
             email,
-            password,
+            password: hashedPassword,
             branch,
             domain,
             role,
