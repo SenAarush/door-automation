@@ -1,5 +1,4 @@
 import connectDB from "@/app/utils/mongoDB"
-import bcrypt from "bcryptjs"
 import { NextRequest, NextResponse } from "next/server"
 import { userZodSchema } from "@/app/validators/user"
 import userModel from "@/app/models/user"
