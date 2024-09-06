@@ -6,10 +6,26 @@ import { generateToken } from "@/app/utils/jwt"
 import { z } from "zod"
 import getUserByParam from "../../getUserByParam"
 import { genHashPassword } from "@/app/utils/bcryptjs"
+import mongoose from "mongoose"
 
 type userType = Omit<z.infer<typeof userZodSchema>, "cPassword">;
 
-async function saveUserToDB(data: userType) {
+interface UserDocument extends mongoose.Document{
+    name: string
+    email: string
+    password: string
+    roll: number
+    branch: string
+    domain: string
+    role: string[]
+    archived: boolean
+    createdAt: Date
+    updatedAt: Date
+}
+
+async function saveUserToDB(
+    data: userType
+): Promise<UserDocument> {
     const newUser = new userModel({
         ...data,
     })
@@ -21,7 +37,9 @@ async function saveUserToDB(data: userType) {
     }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(
+    req: NextRequest
+): Promise<NextResponse> {
     try {
         await connectDB();
 
@@ -94,16 +112,6 @@ export async function POST(req: NextRequest) {
         })
 
         const token = generateToken(createdUser.roll, role)
-
-        if (!token) {
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: "JWT Secret not defined",
-                },
-                { status: 500 }
-            )
-        }
 
         return NextResponse.json(
             {
