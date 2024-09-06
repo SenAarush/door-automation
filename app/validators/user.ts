@@ -6,7 +6,7 @@ const userZodSchema = z.object({
     roll: z.number().int().min(1),
     email: z.string().email().min(1),
     password: z.string().min(1),
-    cPassword: z.string().min(1).optional(),
+    cPassword: z.string().min(1),
     branch: z.string().min(1),
     domain: z.string().min(1),
     role: z.array(z.string()).min(1),
@@ -17,7 +17,7 @@ const userZodSchema = z.object({
 const loginZodSchema = z.object({
 
     roll: z.number().int().min(1),
-    password: z.number().int().min(1)
+    password: z.string().min(1)
     
 })
 
