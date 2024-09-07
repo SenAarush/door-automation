@@ -21,6 +21,10 @@ const loginZodSchema = z.object({
     
 })
 
+const roleZodSchema = z.object({
+    level: z.number().int().min(1)
+})
+
 export { 
     userZodSchema,
     loginZodSchema
