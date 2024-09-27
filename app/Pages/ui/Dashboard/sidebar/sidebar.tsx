@@ -2,6 +2,7 @@ import styles from "./sidebar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { MdDashboard, MdGroup, MdLogout } from "react-icons/md";
+// import { auth, signOut } from "@/app/auth";
 
 // const user = {
 //   img: "/noavatar.png",
@@ -9,14 +10,14 @@ import { MdDashboard, MdGroup, MdLogout } from "react-icons/md";
 // };
 
 interface User {
-  img: string; 
-  username: string; 
+  img: string;
+  username: string;
 }
 
 const user: User = {
-  img: "/noavatar.png", 
-  username: "John Doe"
-}
+  img: "/noavatar.png",
+  username: "John Doe",
+};
 
 // const menuItems = [
 //   {
@@ -36,28 +37,28 @@ const user: User = {
 // ];
 
 // const MenuLink = ({ item }) => {
-  const menuItems: { list: MenuItem[] }[] = [
-    {
-      list: [
-        {
-          title: "Dashboard",
-          path: "/Pages/Dashboard",
-          icon: <MdDashboard />,
-        },
-        {
-          title: "Attendance",
-          path: "/Pages/Dashboard/Attendance",
-          icon: <MdGroup />,
-        },
-      ],
-    },
-  ];
-  
-  interface MenuLinkProps {
-    item: MenuItem;
-  }
-  
-  const MenuLink: React.FC<MenuLinkProps> = ({ item }) => {
+const menuItems: { list: MenuItem[] }[] = [
+  {
+    list: [
+      {
+        title: "Dashboard",
+        path: "/Pages/Dashboard",
+        icon: <MdDashboard />,
+      },
+      {
+        title: "My Attendance",
+        path: "/Pages/Dashboard/Attendance",
+        icon: <MdGroup />,
+      },
+    ],
+  },
+];
+
+interface MenuLinkProps {
+  item: MenuItem;
+}
+
+const MenuLink: React.FC<MenuLinkProps> = ({ item }) => {
   return (
     <Link href={item.path} className={styles.menuLink}>
       {item.icon}
@@ -89,6 +90,17 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
+      {/* <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      > */}
+      <button className={styles.logout}>
+        <MdLogout />
+        Logout
+      </button>
+      {/* </form> */}
     </div>
   );
 }
