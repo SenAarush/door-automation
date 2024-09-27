@@ -1,3 +1,3 @@
 export default function Attendance() {
-  return <div>Attendance </div>;
+  return <div>My Attendance </div>;
 }

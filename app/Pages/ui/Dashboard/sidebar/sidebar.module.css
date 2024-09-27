@@ -53,16 +53,23 @@
   color: var(--textSoft);
   text-decoration: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 15px;
+  color: white;
+  
 }
 
 .menuLink:hover,
 .active {
   background-color: #2e374a;
+  padding: 15px;
+  margin: 5px 0px;
+  border-radius: 10px;
+  color: white;
 }
 
-/* .logout {
-  padding: 20px;
+.logout {
+  padding-top: 20px;
+  padding-left: 15px;
   margin: 5px 0px;
   display: flex;
   align-items: center;
@@ -73,8 +80,9 @@
   border: none;
   color: white;
   width: 100%;
+  font-size:16px ;
 }
 
 .logout:hover {
   background-color: #2e374a;
-} */
+}
