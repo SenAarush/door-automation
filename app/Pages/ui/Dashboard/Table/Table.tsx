@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./table.module.css";
 
-const Transactions = () => {
+const Table = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Attendances</h2>
@@ -208,4 +208,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default Table;
