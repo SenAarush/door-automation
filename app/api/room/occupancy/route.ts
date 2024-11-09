@@ -1,8 +1,8 @@
-import connectDB from "@/app/utils/mongoDB"
+import connectDB from "@/utils/mongoDB"
 import { NextRequest, NextResponse } from "next/server"
 import checkAuthAccess from "../../checkAuthAccess"
-import attendanceModel from "@/app/models/attendence"
-import { AuthData } from "@/app/types/auth"
+import attendanceModel from "@/models/attendence"
+import { AuthData } from "@/types/auth"
 
 export async function GET(
     req: NextRequest
@@ -10,14 +10,14 @@ export async function GET(
     try {
         await connectDB()
 
-        const token = req.headers.get("authorization") as string
-        const authenticatedData: AuthData | false = checkAuthAccess(token, ["Admin", "admin"])
+        // const token = req.headers.get("authorization") as string
+        // const authenticatedData: AuthData | false = checkAuthAccess(token, ["Admin", "admin"])
 
-        if (!authenticatedData) {
-            return NextResponse.json({
-                message: "Unauthorized Access"
-            }, { status: 401 })
-        }
+        // if (!authenticatedData) {
+        //     return NextResponse.json({
+        //         message: "Unauthorized Access"
+        //     }, { status: 401 })
+        // }
 
         const startOfDay = new Date()
         startOfDay.setHours(0, 0, 0, 0)

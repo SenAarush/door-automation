@@ -1,9 +1,9 @@
-import connectDB from "@/app/utils/mongoDB"
-import { loginZodSchema } from "@/app/validators/user"
+import connectDB from "@/utils/mongoDB"
+import { loginZodSchema } from "@/validators/user"
 import bcrypt from "bcryptjs"
 import { NextResponse, NextRequest } from "next/server"
 import getUserByParam from "../../getUserByParam"
-import { generateToken } from "@/app/utils/jwt"
+import { generateToken } from "@/utils/jwt"
 
 export async function POST(
     req: NextRequest

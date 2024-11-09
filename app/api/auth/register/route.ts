@@ -1,11 +1,11 @@
-import connectDB from "@/app/utils/mongoDB"
+import connectDB from "@/utils/mongoDB"
 import { NextRequest, NextResponse } from "next/server"
-import { userZodSchema } from "@/app/validators/user"
-import userModel from "@/app/models/user"
-import { generateToken } from "@/app/utils/jwt"
+import { userZodSchema } from "@/validators/user"
+import userModel from "@/models/user"
+import { generateToken } from "@/utils/jwt"
 import { z } from "zod"
 import getUserByParam from "../../getUserByParam"
-import { genHashPassword } from "@/app/utils/bcryptjs"
+import { genHashPassword } from "@/utils/bcryptjs"
 import mongoose from "mongoose"
 
 type userType = Omit<z.infer<typeof userZodSchema>, "cPassword">;
@@ -17,7 +17,7 @@ interface UserDocument extends mongoose.Document{
     roll: number
     branch: string
     domain: string
-    role: string[]
+    roles: string[]
     archived: boolean
     createdAt: Date
     updatedAt: Date
@@ -63,7 +63,7 @@ export async function POST(
             cPassword,
             branch,
             domain,
-            role,
+            roles,
             roll
         } = validatedReqBody.data
 
@@ -107,11 +107,11 @@ export async function POST(
             password: hashedPassword,
             branch,
             domain,
-            role,
+            roles,
             roll
         })
 
-        const token = generateToken(createdUser.roll, role)
+        const token = generateToken(createdUser.roll, roles)
 
         return NextResponse.json(
             {

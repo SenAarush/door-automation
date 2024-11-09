@@ -1,3 +1,5 @@
+"use state";
+
 export default function Home() {
   return (
     <div>
