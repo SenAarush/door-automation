@@ -1,4 +1,4 @@
-import userModel from "../models/user"
+import userModel from "../../models/user"
 
 export default async function getUserByParam(
     param: number | string,

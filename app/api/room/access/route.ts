@@ -1,8 +1,8 @@
-import connectDB from "@/app/utils/mongoDB"
+import connectDB from "@/utils/mongoDB"
 import { z } from "zod"
 import { NextRequest, NextResponse } from "next/server"
 import getUserByParam from "../../getUserByParam"
-import attendanceModel from "@/app/models/attendence"
+import attendanceModel from "@/models/attendence"
 
 const roomZodSchema = z.object({
     id: z.string().min(1),

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { AuthData, AuthToken } from "../types/auth";
+import { AuthData, AuthToken } from "../../types/auth";
 
 export default function checkAuthAccess(
     token: string,
