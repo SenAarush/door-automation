@@ -1,8 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg: #151c2c;
   --bgSoft: #182237;
   --text: white;
   --textSoft: #b7bac1;
+}
+
+/* Target autofilled inputs and textareas */
+input:-webkit-autofill, textarea:-webkit-autofill {
+  background-color: transparent !important; /* Change the background color */
+  box-shadow: none !important; /* Remove the box-shadow */
+  color: #000 !important; /* Change text color */
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
 }
 
 * {
