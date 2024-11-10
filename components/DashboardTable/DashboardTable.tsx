@@ -1,10 +1,20 @@
 import Image from 'next/image';
-
-import attendanceData from "@/data/mock/attendance.json";
-
 import styles from '@/styles/DashboardTable.module.css';
 
-const DashboardTable = () => {
+interface IAttendanceData {
+  name: string;
+  status: string;
+  date: string;
+  entryTime: string;
+  exitTime: string;
+  avatar: string;
+}
+
+interface DashboardTableProps {
+  attendanceData: IAttendanceData[];
+}
+
+const DashboardTable: React.FC<DashboardTableProps> = ({ attendanceData }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Attendances</h2>
@@ -25,7 +35,7 @@ const DashboardTable = () => {
                 <div className={styles.user}>
                   <Image
                     src={data.avatar}
-                    alt=""
+                    alt={`${data.name}'s avatar`}
                     width={40}
                     height={40}
                     className={styles.userImage}
@@ -35,9 +45,7 @@ const DashboardTable = () => {
               </td>
               <td>
                 <span
-                  className={`${styles.status} ${
-                    data.status === "Active" ? styles.pending : styles.cancelled
-                  }`}
+                  className={`${styles.status} ${data.status === "Active" ? styles.pending : styles.cancelled}`}
                 >
                   {data.status}
                 </span>
