@@ -9,9 +9,13 @@ const Table = () => {
         <thead>
           <tr>
             <td>Name</td>
+            {/* <td>User</td> */}
             <td>Status</td>
             <td>Date</td>
-            <td>Time Stamp</td>
+            <td>Entry Time</td>
+            <td>Exit Time</td>
+            <td>User Type</td>
+            <td>Dummy</td>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +54,9 @@ const Table = () => {
               </div>
             </td>
             <td>
-              <span className={`${styles.status} ${styles.cancelled}`}>Inactive</span>
+              <span className={`${styles.status} ${styles.cancelled}`}>
+                Inactive
+              </span>
             </td>
             <td>14.02.2024</td>
             <td>23:00:45</td>

@@ -16,13 +16,14 @@ const Dashboard = () => {
           <Card />
           <Card />
           <Card />
+          <Card />
         </div>
         <Table />
         {/* <Chart /> */}
       </div>
-      <div className={styles.side}>
+      {/* <div className={styles.side}>
         <Rightbar />
-      </div>
+      </div> */}
     </div>
   );
 };
